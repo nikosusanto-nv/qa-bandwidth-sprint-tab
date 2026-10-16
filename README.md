@@ -27,8 +27,8 @@ Move each ticket under the QA who will test it in the **BREAKDOWN** section. Row
 
 Then, with that sprint's tab open, choose **QA Tools → Assign QA tickets in Jira**. The script lists every change it will make and only touches Jira after you click **Yes**:
 
-- **Title has `[QA]`, one QA:** the ticket itself is assigned to that QA.
-- **Anything else:** each QA gets their own `[QA]` sub-task. A sub-task already assigned to them is kept. Otherwise an open `[QA]` sub-task that no listed QA holds is reused, and if none is left, a new `[QA] Execute testing` sub-task is created and assigned.
+- **Title has `[QA]`, one QA:** the ticket itself is assigned to that QA, and so is its `[QA]` sub-task (see below).
+- **Every ticket:** each listed QA gets their own `[QA]` sub-task. A sub-task already assigned to them is kept. Otherwise an open `[QA]` sub-task that no listed QA holds is reused, and if none is left, a new `[QA] Execute testing` sub-task is created and assigned.
 
 Tickets that are already assigned correctly are skipped, so it's safe to run again after changing the sheet.
 

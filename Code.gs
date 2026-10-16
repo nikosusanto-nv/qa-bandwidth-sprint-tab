@@ -13,8 +13,8 @@
  * contains "[QA]" or its "QA Estimate" field has a value.
  *
  * Assignment rules (one ticket can be listed under several QAs):
- *   - title has [QA] and one QA ....... assign the ticket itself
- *   - otherwise, for each QA .......... assign a [QA] sub-task: keep one already
+ *   - title has [QA] and one QA ....... assign the ticket itself, plus its [QA] sub-task
+ *   - every ticket, for each QA ....... assign a [QA] sub-task: keep one already
  *                                       assigned to them, else reuse a [QA] sub-task
  *                                       not held by a listed QA, else create
  *                                       "[QA] Execute testing" and assign it
@@ -251,10 +251,10 @@ function planAssignments_(entries, info) {
       return;
     }
 
+    // A [QA] ticket with one QA: assign the ticket itself, then its [QA] sub-task below.
     if (/\[QA\]/i.test(ticket.summary) && qas.length === 1) {
       const { qa, user } = qas[0];
       if (ticket.assignee !== user) actions.push({ type: 'assign', key, qa, user, what: 'ticket' });
-      return;
     }
 
     const users = qas.map((q) => q.user);
